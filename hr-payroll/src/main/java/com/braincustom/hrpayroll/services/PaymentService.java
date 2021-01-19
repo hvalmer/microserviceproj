@@ -1,37 +1,26 @@
 package com.braincustom.hrpayroll.services;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
 import com.braincustom.hrpayroll.entities.Payment;
 import com.braincustom.hrpayroll.entities.Worker;
+import com.braincustom.hrpayroll.feignclients.WorkerFeignClient;
 
 @Service
 public class PaymentService {
-
-	@Value("${hr-worker.host}")
-	private String workerHost;
 	
-	@Autowired //injetado de forma automática
-	private RestTemplate restTemplate;
+	@Autowired
+	private WorkerFeignClient workerFeignClient;
 	
 	public Payment getPayment(long workerId, int days) {
-		//mapa de parâmetros
-		Map<String, String> uriVariables = new HashMap<>();
-		uriVariables.put("id", ""+workerId);
-		
+				
 		/*
 		 * preenchimento dinâmico do
 		 * trabalhador, e fazendo a requisição dinâmica do outro projeto do worker 
 		 * 
 		 */ 
-		Worker worker = restTemplate.getForObject(workerHost + "/workers/{id}", 
-				Worker.class, uriVariables);
+		Worker worker = workerFeignClient.finById(workerId).getBody();
 		return new Payment(worker.getName(), worker.getDailyIncome(), days);
 	}
 	
