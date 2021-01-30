@@ -27,7 +27,7 @@ public class UserResource {
 		
 		//por email...busca no BD e retorna o objeto
 		@GetMapping(value= "/search")
-		public ResponseEntity<User> finById(@RequestParam String email){
+		public ResponseEntity<User> finByEmail(@RequestParam String email){
 			User obj = repository.findByEmail(email);
 			return ResponseEntity.ok(obj);
 	}
