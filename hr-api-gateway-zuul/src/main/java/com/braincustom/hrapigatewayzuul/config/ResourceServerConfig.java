@@ -25,7 +25,8 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 	private static final String[] OPERATOR = { "/hr-worker/**" };
 	
 	//rota para o admin acessar - ADMIN 
-	private static final String[] ADMIN = { "/hr-payroll/**", "/hr-user/**" };
+	private static final String[] ADMIN = { "/hr-payroll/**", "/hr-user/**", 
+			"/actuator/**", "/hr-worker/actuator/**", "/hr-oauth/actuator/**" };
 	
 	//o projeto consegue "ler" o token
 	@Override
