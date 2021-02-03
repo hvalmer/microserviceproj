@@ -1,10 +1,8 @@
 # Curso Microsserviços Java com Spring Boot e Spring Cloud
-#### Nelio Alves 
-https://www.udemy.com/user/nelio-alves
+#### Harlan Valmer 
+https://www.linkedin.com/in/harlan-goyana-83ba42125/
 
-https://youtube.com/devsuperior
-
-https://instagram.com/devsuperior.ig
+https://github.com/hvalmer/microserviceproj
 
 # Fase 1: Comunicação simples, Feign, Ribbon
 
